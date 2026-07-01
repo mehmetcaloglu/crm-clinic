@@ -1,0 +1,28 @@
+---
+description: Healthcare-adjacent privacy, KVKK, and security requirements
+alwaysApply: true
+---
+
+# Security & KVKK
+
+This product is **healthcare-adjacent**. Treat as sensitive:
+
+- Clinical/treatment notes and health-related text
+- Messages and conversation content
+- Phone numbers and personal identifiers
+
+## Requirements
+
+- Do **not** log sensitive data (notes, message bodies, phones) to console, error trackers, or audit logs beyond what policy allows
+- Do **not** expose data across workspaces — enforce RLS + application-level tenant checks
+- Never commit secrets (`.env`, API keys, tokens) — use env vars only
+- Validate and sanitize all user input; scope queries by `workspace_id`
+- Webhook endpoints: verify signatures, reject replay, enforce idempotency
+
+## AI and automation
+
+- No automatic medical advice to patients
+- No automatic outbound messages without explicit human approval
+- AI features (future): summaries/drafts only, human-in-the-loop
+
+Reference: `docs/08-security-kvkk.md`, ADR-006 in `docs/DECISIONS.md`

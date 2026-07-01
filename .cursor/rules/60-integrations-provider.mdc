@@ -1,0 +1,25 @@
+---
+description: Provider adapter order, boundaries, and normalized events
+alwaysApply: true
+---
+
+# Integrations & Providers
+
+## Integration order (strict)
+
+1. Manual CRM first — source fields, deep links, manual conversation log
+2. WhatsApp provider/BSP (Twilio, 360dialog, etc.) — Phase 3+
+3. Instagram manual/deep-link pilot — Phase 4
+4. Instagram API / omnichannel pilot — Phase 5+ only after demand is proven
+
+Do **not** start direct Meta API work unless explicitly approved and manual CRM MVP is usable.
+
+## Adapter requirements
+
+- Implement `ChannelProvider` interface in `lib/integrations/`
+- Normalize all inbound events to internal format (`NormalizedInboundMessageEvent`)
+- Store raw provider payloads separately; never leak into domain services or UI
+- Webhook handlers: signature validation, idempotency, workspace routing
+- Outbound sends go through adapter, not direct SDK calls from UI
+
+Reference: `docs/05-integration-strategy.md`, `docs/06-provider-selection.md`, ADR-004/005 in `docs/DECISIONS.md`

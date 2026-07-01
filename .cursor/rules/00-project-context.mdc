@@ -1,0 +1,36 @@
+---
+description: Project goal, stack, MVP order, and forbidden early work
+alwaysApply: true
+---
+
+# Project Context
+
+Physiotherapist-focused mini CRM SaaS. Core product: contacts, notes, statuses, appointments, session packages, follow-ups, reports. WhatsApp/Instagram are **provider adapters**, not the domain center.
+
+## Stack
+
+- Next.js App Router, React, TypeScript, Tailwind CSS
+- Supabase Postgres/Auth + RLS (planned)
+- Vercel (planned)
+
+## MVP order (do not skip)
+
+1. Phase 0 — Foundation (auth, workspace, layout)
+2. Phase 1 — Manual CRM (no real messaging APIs)
+3. Phase 2 — Physio features (appointments, packages)
+4. Phase 3+ — WhatsApp BSP/provider, then Instagram manual pilot, then API integrations
+
+## Forbidden early work
+
+- Direct Meta WhatsApp/Instagram API integration
+- Omnichannel inbox before manual CRM is usable
+- Auto-merge contacts across channels by name alone
+- AI auto-replies or medical advice without human approval
+- Installing packages or implementing CRM features unless explicitly requested
+
+## Read before planning
+
+1. `AGENTS.md` — agent behavior source of truth
+2. `docs/PROCESS.md`, `docs/TASKS.md`, `docs/DECISIONS.md`
+3. Relevant `docs/*.md` and `docs/tasks/PHASE-*.md` for the current phase
+4. `node_modules/next/dist/docs/` before writing Next.js code (breaking changes vs training data)

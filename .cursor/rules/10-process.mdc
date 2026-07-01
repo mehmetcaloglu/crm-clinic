@@ -1,0 +1,60 @@
+---
+description: Development process and subagent coding policy
+alwaysApply: true
+---
+
+# Process
+
+For any non-trivial task, follow this sequence:
+
+1. **Read docs** — `AGENTS.md`, `docs/PROCESS.md`, `docs/TASKS.md`, relevant phase file, `docs/DECISIONS.md`
+2. **Short plan** — goal, assumptions, files to inspect, proposed changes, risks
+3. **List files to change** — be explicit before editing
+4. **Wait for approval** if the task is large, touches many files, or changes architecture/data model
+5. **Implement small steps** — one module or screen at a time; do not implement unrelated features
+6. **Run checks** — typecheck, lint, build when relevant; run or document tests
+7. **Update docs** — `docs/WORKLOG.md`, `docs/TASKS.md`; update `DECISIONS`/`CHANGELOG`/`PROCESS` only when applicable (see `80-docs-worklog.mdc`)
+
+## Task scope defaults
+
+- Do not change app functionality unless the task requires it
+- Do not install packages unless explicitly requested
+- Prefer plan-only responses when user says "do not implement yet"
+
+Wait for approval before editing if the task changes architecture, database schema, auth/security/privacy, or starts WhatsApp/Instagram integration.
+
+## Subagent Coding Policy
+
+- Subagents **may write code** only for isolated, clearly scoped tasks.
+- The **main agent coordinates** all subagent work.
+- Before coding, a subagent must receive **explicit allowed files or folders**.
+- **Multiple subagents must not edit the same files** at the same time.
+- Subagents must **not** make architecture, database schema, auth, privacy, or integration strategy changes without an approved plan.
+- Subagents may freely be used for planning, review, QA, docs updates, and focused component/test implementation.
+
+After a coding subagent finishes, it must report:
+
+- files changed
+- summary of changes
+- assumptions made
+- checks/tests run
+- risks or follow-up tasks
+
+The **main agent must review** subagent output before continuing.
+
+### Good coding subagent tasks
+
+- Build one UI component
+- Build one page (after plan approval)
+- Write tests for one feature
+- Update docs/process files
+- Implement one provider adapter mock
+- Refactor one isolated module
+
+### Bad coding subagent tasks
+
+- Change database schema and UI and auth together
+- Edit broad architecture without approval
+- Start WhatsApp/Instagram API integration early
+- Auto-merge contacts
+- Edit files already being edited by another agent

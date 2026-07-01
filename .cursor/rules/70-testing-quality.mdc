@@ -1,0 +1,29 @@
+---
+description: Quality checks and required test scenarios
+alwaysApply: true
+---
+
+# Testing & Quality
+
+## Before marking work done
+
+Run when relevant:
+
+```bash
+npm run typecheck   # or tsc --noEmit if configured
+npm run lint
+npm run build
+npm test            # when test runner exists
+```
+
+## Critical scenarios (test or document manual checks)
+
+- **Workspace isolation** — user A cannot read/write workspace B data
+- **Contact identity matching** — match on channel id, not name; no unsafe auto-merge
+- **Duplicate message prevention** — same external message id does not create duplicate rows
+- **Status changes** — pipeline transitions update follow-up lists correctly
+- **Appointment / session package logic** — completion deducts sessions; no over-deduction
+
+If automated tests are not available yet, add a **Manual checks** section to the worklog entry describing what was verified.
+
+Reference: `docs/11-testing-strategy.md`

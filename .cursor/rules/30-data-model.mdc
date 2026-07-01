@@ -1,0 +1,36 @@
+---
+description: Domain models, tenant scoping, and identity matching rules
+alwaysApply: true
+---
+
+# Data Model
+
+## Core principle
+
+- **Contact** = the real client/person in the CRM
+- **ContactIdentity** = channel-specific identity (WhatsApp phone, Instagram user id, manual phone)
+- **Never** auto-merge WhatsApp and Instagram users by display name alone
+
+## Tenant scoping
+
+- `workspace_id` on every tenant-owned table
+- All reads/writes scoped to current workspace
+- RLS policies enforce isolation at the database layer
+
+## Idempotency
+
+- External message IDs must be unique per provider/workspace to prevent duplicate webhook processing
+- Use unique constraints on `(workspace_id, provider, external_message_id)` or equivalent
+
+## Expected domain models
+
+Workspace, User/Profile, Contact, ContactIdentity, Conversation, Message, Note, Appointment, SessionPackage, SessionUsage, FollowUpTask, ReplyTemplate
+
+> Docs may use `TreatmentPackage` — treat as alias for `SessionPackage` until renamed in schema.
+
+## Identity matching
+
+- Match inbound events on verified channel identifiers (phone, external user id), not name similarity
+- Suggested merges require human confirmation + audit log
+
+Reference: `docs/04-data-model.md`, ADR-003 in `docs/DECISIONS.md`

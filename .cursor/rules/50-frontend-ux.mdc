@@ -1,0 +1,28 @@
+---
+description: UI priorities, simplicity, and screen conventions
+alwaysApply: true
+---
+
+# Frontend & UX
+
+Keep UI **simple and fast**. Avoid over-design. Desktop-first admin dashboard is acceptable; must remain mobile-friendly.
+
+## Priority screens
+
+1. Dashboard (follow-ups, quick stats)
+2. Follow-ups / Inbox
+3. Contacts list
+4. Contact detail
+5. Appointments
+6. Session packages
+7. Reports
+8. Settings
+
+## Component rules
+
+- Reusable components in `components/` grouped by feature
+- Every list/detail view: loading, empty, and error states
+- Forms: clear validation messages; no business logic in JSX — call domain services
+- Use Tailwind + existing UI patterns; add shadcn/ui when Phase 0 establishes it
+
+Reference: `docs/09-ux-flows.md`

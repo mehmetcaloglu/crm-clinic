@@ -1,0 +1,33 @@
+---
+description: Modular folder layout and layer boundaries
+alwaysApply: true
+---
+
+# Architecture
+
+## Folder responsibilities
+
+| Path | Purpose |
+|------|---------|
+| `app/` | Routes, layouts, server actions entry points |
+| `components/` | UI only — no business rules |
+| `lib/domain/` | Business logic, services, domain types |
+| `lib/db/` | Supabase client, repositories, typed queries |
+| `lib/integrations/` | Provider adapters (WhatsApp, Instagram, Chatwoot, etc.) |
+| `lib/security/` | Auth helpers, validation, permissions, audit |
+| `supabase/migrations/` | Schema migrations |
+
+## Layer flow
+
+```txt
+UI → Server Actions / API Routes → Domain Services → Repositories → Provider Adapters
+```
+
+## Rules
+
+- Do **not** place business logic directly in UI components; extract to `lib/domain/` or hooks that call domain services
+- Do **not** couple CRM domain models to WhatsApp/Instagram/Meta/Twilio payloads
+- Provider-specific code stays in `lib/integrations/` behind `ChannelProvider` interface
+- Domain services must not import provider SDKs
+
+Reference: `docs/03-architecture.md`, `docs/05-integration-strategy.md`

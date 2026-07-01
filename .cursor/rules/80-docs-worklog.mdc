@@ -1,0 +1,56 @@
+---
+description: When and how to update project documentation after work
+alwaysApply: true
+---
+
+# Documentation Updates
+
+After **completed** work, update:
+
+| File | When |
+|------|------|
+| `docs/WORKLOG.md` | Always — date, done/changed/blocked/next |
+| `docs/TASKS.md` | Always — mark tasks done or add new ones |
+| `docs/tasks/PHASE-*.md` | When work maps to a phase checklist item |
+| `docs/DECISIONS.md` | Only when a product or technical decision changed |
+| `docs/CHANGELOG.md` | Only when user-visible behavior changed |
+| `docs/PROCESS.md` | Only when workflow or Definition of Done changed |
+
+Do not update DECISIONS/CHANGELOG/PROCESS for routine implementation work.
+
+Use the **process-updater** skill (`.cursor/skills/process-updater/SKILL.md`) or **update-process-docs** command for consistency.
+
+
+# Extra Documentation Update Rules
+
+After every completed implementation task, update:
+
+- docs/WORKLOG.md:
+  - date
+  - task title
+  - summary
+  - files changed
+  - checks/tests run
+  - known issues
+  - next suggested step
+
+- docs/TASKS.md:
+  - mark completed items
+  - update in-progress items
+  - add newly discovered tasks
+  - mark blocked items
+
+Update docs/DECISIONS.md only if:
+- product scope changed
+- architecture changed
+- data model changed
+- integration strategy changed
+- security/privacy decision changed
+
+Update docs/CHANGELOG.md only if:
+- user-visible behavior changed
+- feature added
+- feature removed
+- bug fixed
+
+Do not change application code when the user only asks to update process docs.
