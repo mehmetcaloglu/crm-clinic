@@ -1,0 +1,17 @@
+---
+description: When and how to update project documentation after work
+alwaysApply: txrue
+---
+
+
+# Manual Code Review Checkpoints
+
+When the user asks for a manual code review:
+
+- Use the code-reviewer skill.
+- Do not fix code automatically.
+- Review the diff and relevant docs.
+- Return a structured review report.
+- Use severity labels: BLOCKER, HIGH, MED Return a structured review report.
+- Use severity labels: BLOCKER, HIGH, MEDIUM, LOW.
+- Only apply fixes after explicit user approval.

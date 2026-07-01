@@ -14,15 +14,15 @@ MVP 5: Direkt API / gelişmiş otomasyon
 
 ## Phase 0 — Foundation
 
-- [ ] Proje oluştur: Next.js + TypeScript
-- [ ] UI sistemi kur: Tailwind + shadcn/ui
-- [ ] Supabase proje ve env ayarları
-- [ ] Auth akışı
-- [ ] Workspace modeli
-- [ ] Role/member modeli
-- [ ] Ana dashboard layout
-- [ ] RLS policy temel testleri
-- [ ] Error/loading/empty state componentleri
+- [x] Proje oluştur: Next.js + TypeScript
+- [x] UI sistemi kur: Tailwind + shadcn/ui
+- [x] Supabase proje ve env ayarları
+- [x] Auth akışı
+- [x] Workspace modeli
+- [x] Role/member modeli
+- [x] Ana dashboard layout
+- [ ] RLS policy temel testleri (manual — migration + `supabase/tests/workspace_rls_test.sql`)
+- [x] Error/loading/empty state componentleri
 
 Detay: `tasks/PHASE-0-foundation.md`
 
